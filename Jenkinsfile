@@ -50,7 +50,7 @@ pipeline{
                     script{
                         docker.withregistry('https://index.docker.io/v1/', 'DockerHub')
                         {
-                            def image = docker.build(aasheesh123/jenkins:v1)
+                            def image = docker.build('aasheesh123/jenkins:v1')
                             image.push()
                         }
                     }
