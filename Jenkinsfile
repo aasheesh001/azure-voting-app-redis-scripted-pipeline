@@ -6,7 +6,7 @@ pipeline{
          steps {
             echo "$GIT_BRANCH"
          }
-
+        }
         stage('Docker Build') {
          steps {
             powershell 'docker images -a'
@@ -48,6 +48,5 @@ pipeline{
     //      }
     //     }
 
-      }
-   }
+    }
 }
