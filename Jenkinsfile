@@ -58,5 +58,22 @@ pipeline{
                 }
             }
         }
+        stage('Deploy to QA')
+        {
+           environment{
+              ENVIRONMENT = 'qa'
+           }
+           steps
+           {
+              echo "Deploying to $ENVIRONMENT"
+              acsDeploy(
+                 azureCredentialsId: 'Azure_Access', 
+                 configFilePaths: '**/*.yaml', 
+                 containerService: 'azure-vote-app', 
+                  resourceGroupName: 'Jenkins_To_Kubernetes', 
+                  sshCredentialsId: ''
+              )
+           }
+        }
     }
 }
