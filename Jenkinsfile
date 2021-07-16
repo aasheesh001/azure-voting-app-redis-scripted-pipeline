@@ -45,10 +45,11 @@ pipeline{
         }
         stage('Container Push'){
             steps{
+                echo "Workspace is $WORKSPACE"
                 dir("$WORKSPACE/azure-vote")
                 {
                     script{
-                        docker.withregistry('https://index.docker.io/v1/', 'DockerHub')
+                        docker.withRegistry('https://index.docker.io/v1/', 'DockerHub')
                         {
                             def image = docker.build('aasheesh123/jenkins:v1')
                             image.push()
