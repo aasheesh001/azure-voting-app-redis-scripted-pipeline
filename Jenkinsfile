@@ -33,11 +33,11 @@ pipeline{
              }
           }
        }
-       stage('Run Tests') {
-          steps {
-             powershell 'pytest ./tests/test_sample.py'
-          }
-       }
+    //    stage('Run Tests') {
+    //       steps {
+    //          powershell 'pytest ./tests/test_sample.py'
+    //       }
+    //    }
        stage('Stop test app') {
           steps {
              powershell 'docker-compose down'
