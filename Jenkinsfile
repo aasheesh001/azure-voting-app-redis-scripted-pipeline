@@ -58,22 +58,27 @@ pipeline{
                 }
             }
         }
-        stage('Deploy to QA')
-        {
-           environment{
-              ENVIRONMENT = 'qa'
-           }
-           steps
-           {
-              echo "Deploying to $ENVIRONMENT"
-              acsDeploy(
-                 azureCredentialsId: 'Azure_Access', 
-                 configFilePaths: '**/*.yaml', 
-                 containerService: 'azure-vote-app', 
-                  resourceGroupName: 'Jenkins_To_Kubernetes', 
-                  sshCredentialsId: ''
-              )
-           }
-        }
+      //   stage('Deploy to QA')
+      //   {
+      //      environment{
+      //         ENVIRONMENT = 'qa'
+      //      }
+      //      steps
+      //      {
+      //         echo "Deploying to $ENVIRONMENT"
+      //         acsDeploy(
+      //            azureCredentialsId: 'Azure_Access', 
+      //            configFilePaths: '**/*.yaml', 
+      //            containerService: 'azure-vote-app', 
+      //             resourceGroupName: 'Jenkins_To_Kubernetes', 
+      //             sshCredentialsId: ''
+      //         )
+      //      }
+       
+       stage('RG')
+       {
+          azureCLI commands: [[exportVariablesString: '', script: 'az group create --name AKSDevOps --location eastus']], principalCredentialId: 'Azure_Access'
+       }
+      }
     }
 }
