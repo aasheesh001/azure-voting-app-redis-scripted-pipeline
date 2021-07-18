@@ -79,6 +79,5 @@ pipeline{
        {
           azureCLI commands: [[exportVariablesString: '', script: 'az group create --name AKSDevOps --location eastus']], principalCredentialId: 'Azure_Access'
        }
-      }
-    }
+   }
 }
