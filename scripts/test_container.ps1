@@ -2,7 +2,7 @@ $count = 0
 do {
     $count++
     Write-Output "[$env:STAGE_NAME] Starting container [Attempt: $count]"
-    
+    Start-Sleep -Seconds 20
     $testStart = Invoke-WebRequest -Uri http://localhost:8000
     
     if ($testStart.statuscode -eq '200') {
