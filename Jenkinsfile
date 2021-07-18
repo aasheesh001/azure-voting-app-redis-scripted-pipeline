@@ -20,9 +20,8 @@ pipeline{
        stage('Start test app') {
           steps {
              powershell '''
-                docker-compose up -d
-                ./scripts/test_container.ps1
-               Start-Sleep -s 15
+                docker-compose up -d ./scripts/test_container.ps1
+                Start-Sleep -s 15
              '''
           }
           post {
